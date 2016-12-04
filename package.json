@@ -4,7 +4,8 @@
   "description": "test concepts for use canvas",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/francisco-navarro/canvas4fun/issues"
   },
-  "homepage": "https://github.com/francisco-navarro/canvas4fun#readme"
+  "homepage": "https://github.com/francisco-navarro/canvas4fun#readme",
+  "devDependencies": {
+    "express": "^4.14.0"
+  }
 }
