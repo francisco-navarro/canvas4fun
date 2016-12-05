@@ -53,14 +53,14 @@ function Map(){
 
   function mesh(x, y, color){
     border(x, y);
-    app.ctx.fillStyle = color || 'rgba(135, 212, 144, 1)';
+    app.ctx.fillStyle = color || 'rgb(113, 142, 69)';
     app.ctx.fill();
   }
 
   function coordText(carX, carY, a, b){
     var isoX = carX + carY + app.conf.offsetX + app.conf.offsetY;
     var isoY = (carY + app.conf.offsetY - carX - app.conf.offsetX) / 2.0;
-    app.ctx.fillStyle = 'rgba(261, 212, 244, 1)';
+    app.ctx.fillStyle = 'rgba(261, 212, 244, 0.5)';
     app.ctx.fillText(a + ',' + b, isoX - 5, isoY);
   }
 

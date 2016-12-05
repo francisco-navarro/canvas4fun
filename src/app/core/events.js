@@ -8,8 +8,8 @@ function Events(){
   function click(ev){
     var cartCord = getMousePos(app.canvas, ev);
     var isoCord = app.getIsoCell(cartCord.x, cartCord.y);
-    //TODO: recoger el evento que tenemos preparado de click
-    app.scenery.road.add(isoCord.x, isoCord.y);
+    console.log('clicked ', isoCord);
+    app.toolbar.selected(isoCord.x, isoCord.y);
   }
 
   function mousemove(ev){
@@ -19,12 +19,12 @@ function Events(){
   }
 
   function getMousePos(canvas, evt) {
-      var rect = canvas.getBoundingClientRect();
+    var rect = canvas.getBoundingClientRect();
 
-      return {
-        x: evt.clientX - rect.left,
-        y: evt.clientY - rect.top
-      };
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
   }
 
   function animate(){

@@ -7,6 +7,7 @@ function init(){
     'config.js',
     'core/draw.js',
     'core/events.js',
+    'core/toolbar.js',
     'core/map.js',
     'scenery/main.js',
     'mobs/main.js'

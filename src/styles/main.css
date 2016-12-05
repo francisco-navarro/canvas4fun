@@ -3,6 +3,30 @@ body {
   background-color: #aaaaaa;
 }
 
+.toolbar {
+  border-radius: 0px 0px 8px 8px;
+  border: 3px solid #FFFFFF;
+  -webkit-border-radius: 0px 0px 8px 8px;
+  -moz-border-radius: 0px 0px 8px 8px;
+  background-color: #a5d0e5;
+  font-size: 24px;
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  padding: 0 10px;
+  transform: translateX(-50%);
+}
+
+.toolbar .fa {
+  cursor: pointer;
+  min-width: 30px;
+  padding: 4px;
+  text-align: center;
+}
+
+.toolbar .fa:hover,  .toolbar .fa.selected{
+  background-color: #5885b5;
+}
 #map {
   background-color:gray;
 }
