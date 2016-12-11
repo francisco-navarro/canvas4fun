@@ -2,6 +2,8 @@ var express = require('express');
 
 
 var app = express();
-app.use('/', express.static('./app/'));
+var appPort = 3000;
 
-app.listen(3000);
+app.use('/', express.static('./app/'));
+app.listen(appPort);
+console.log('app started in ' + appPort);
