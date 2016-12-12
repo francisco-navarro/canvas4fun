@@ -1,1 +1,5 @@
-alert('map');
+app.map = new Map();
+
+function Map(){
+  'use strict';
+}

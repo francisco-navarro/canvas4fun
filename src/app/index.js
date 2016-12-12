@@ -6,6 +6,7 @@ var PATH = 'app/';
 function init(){
   load('config');
   load('core/draw');
+  load('core/events');
   load('core/map');
 }
 
