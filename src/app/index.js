@@ -1,7 +1,18 @@
 var app = {
-  load: load
+  init: init
 };
+var PATH = 'app/';
 
-function load(){
-  //load config
+function init(){
+  load('config');
+  load('core/draw');
+  load('core/map');
+}
+
+function load(file) {
+  var uri = PATH + file;
+  if (!uri.match(/\.js/)) {
+    uri += '.js';
+  }
+  $.getScript(uri);
 }
