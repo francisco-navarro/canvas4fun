@@ -5,11 +5,8 @@ function Draw(){
   app.canvas = document.getElementById('map');
 
   if (app.canvas.getContext) {
-    app.ctx = canvas.getContext('2d');
+    app.ctx = app.canvas.getContext('2d');
     app.ctx.font = '8px Verdana';
-    isoDrawUtils();
-    //INIT COMPONENTS
-    initComponents();
   } else {
     console.warn('canvas not compatible');
   }

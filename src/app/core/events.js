@@ -5,7 +5,7 @@ function Events(){
 
   function clicked(ev){
     var rect = app.canvas.getBoundingClientRect();
-    var isoC = getMousePos(canvas, ev);
+    var isoC = getMousePos(app.canvas, ev);
 
     console.log(app.getIsoCell(isoC.x, isoC.y));
   }
