@@ -4,7 +4,7 @@ var app = {
 
 function init(){
   SystemJS.config({
-    baseURL: '/js'
+    baseURL: '/app'
   });
   SystemJS.import('config.js');
   SystemJS.import('core/draw.js');
