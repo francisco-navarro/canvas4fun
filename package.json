@@ -19,5 +19,8 @@
   "homepage": "https://github.com/francisco-navarro/canvas4fun#readme",
   "devDependencies": {
     "express": "^4.14.0"
+  },
+  "dependencies": {
+    "systemjs": "^0.19.41"
   }
 }

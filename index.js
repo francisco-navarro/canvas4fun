@@ -1,10 +1,12 @@
 var express = require('express');
+var path = require('path');
 
 
 var app = express();
 var appPort = 3000;
 
-app.use('/', express.static('./src/'));
-app.use('/lib', express.static('./lib/'));
+app.use('/', express.static(__dirname + '/src/'));
+app.use('/lib', express.static(__dirname + '/lib/'));
+
 app.listen(appPort);
 console.log('app started in ' + appPort);

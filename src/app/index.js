@@ -1,19 +1,13 @@
 var app = {
   init: init
 };
-var PATH = 'app/';
 
 function init(){
-  load('config');
-  load('core/draw');
-  load('core/events');
-  load('core/map');
-}
-
-function load(file) {
-  var uri = PATH + file;
-  if (!uri.match(/\.js/)) {
-    uri += '.js';
-  }
-  $.getScript(uri);
+  SystemJS.config({
+    baseURL: '/js'
+  });
+  SystemJS.import('config.js');
+  SystemJS.import('core/draw.js');
+  SystemJS.import('core/events.js');
+  SystemJS.import('core/map.js');
 }
