@@ -16,7 +16,7 @@ var path = require('path');
 browserSync.init(null, {
     browser: 'google chrome',
     port: 7000,
-    // files: '**/*.*',
+    files: ['src/**/*.*'],
     server: {
         baseDir: 'src',
         routes: {
