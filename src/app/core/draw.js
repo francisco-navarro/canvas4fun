@@ -2,7 +2,10 @@ app.draw = new Draw();
 
 function Draw(){
   'use strict';
-  app.canvas = document.getElementById('map');
+  app.canvas = document.createElement('canvas');
+  app.canvas.width = window.innerWidth;
+  app.canvas.height = window.innerHeight;
+  document.getElementById('map').appendChild(app.canvas);
 
   if (app.canvas.getContext) {
     app.ctx = app.canvas.getContext('2d');
