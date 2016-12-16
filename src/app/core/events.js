@@ -8,9 +8,9 @@ function Events(){
     var rect = app.canvas.getBoundingClientRect();
     var cartCord = getMousePos(app.canvas, ev);
     var isoCord = app.getIsoCell(cartCord.x, cartCord.y);
-    console.log(isoCord);
+    // console.log(isoCord);
+    app.ctx.clearRect(cartCord.x - 40, cartCord.y - 40, 64, 64);
     app.scenery.road.add(isoCord.x, isoCord.y);
-    app.ctx.clearRect(cartCord.x - 32, cartCord.y - 32, 64, 64);
   }
 
   function getMousePos(canvas, evt) {
