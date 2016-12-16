@@ -3,13 +3,18 @@ var app = {
 };
 
 function init(){
+  var dependencies = [
+    'config.js',
+    'core/draw.js',
+    'core/events.js',
+    'core/map.js',
+    'scenery/main.js',
+    'mobs/main.js'
+  ];
   SystemJS.config({
     baseURL: '/app'
   });
-  SystemJS.import('config.js');
-  SystemJS.import('core/draw.js');
-  SystemJS.import('core/events.js');
-  SystemJS.import('core/map.js');
-  SystemJS.import('scenery/main.js');
-  SystemJS.import('mobs/main.js');
+  dependencies.reduce(function(prev, cur) {
+    return prev.then(SystemJS.import(cur));
+  }, SystemJS.import(dependencies[0]));
 }

@@ -7,6 +7,6 @@ app.conf = {
   map: {
     height: 10,
     width: 10,
-    coordText: false
+    coordText: true
   }
 };

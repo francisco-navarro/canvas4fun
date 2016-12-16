@@ -2,12 +2,23 @@ app.scenery = new Scenery();
 
 function Scenery(){
   var size = app.conf.SQUARE_SIZE;
+  var deps = [
+    'road'
+  ];
 
   init();
 
   function init() {
-    SystemJS.import('scenery/road.js');
+    deps.forEach(function(item){
+      SystemJS.import('scenery/' + item + '.js');
+    });
   }
+
+  this.animate = function() {
+    deps.forEach(function(item){
+      app.scenery[item].animate();
+    });
+  };
 
   this.drawTile = function(image, x, y /*, sWidth, sHeight, dx, dy, dWidth, dHeight*/){
     //Cartesian coords
