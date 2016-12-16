@@ -4,7 +4,10 @@ function Map(){
   'use strict';
 
   var SQUARE_SIZE = app.conf.SQUARE_SIZE;
-  init(app.conf.height, app.conf.width);
+  this.mesh = mesh;
+  this.coordText = coordText;
+
+  init(app.conf.map.height, app.conf.map.width);
 
   function init(n, m) {
     for(var i = 0; i < n; i++) {
@@ -12,7 +15,9 @@ function Map(){
         var x = i * SQUARE_SIZE + app.conf.offsetX;
         var y = j * SQUARE_SIZE + app.conf.offsetY;
         mesh(x, y);
-        coordText(x + SQUARE_SIZE / 2, y + SQUARE_SIZE / 2, i, j);
+        if(app.conf.map.coordText){
+          coordText(x + SQUARE_SIZE / 2, y + SQUARE_SIZE / 2, i, j);
+        }
       }
     }
   }
@@ -34,6 +39,7 @@ function Map(){
   function coordText(carX, carY, n, m){
     var isoX = carX + carY;
     var isoY = (carY - carX) / 2.0;
+    app.ctx.fillStyle = 'rgba(261, 212, 244, 0.4)';
     app.ctx.fillText(n + ',' + m, isoX - 5, isoY);
   }
 }

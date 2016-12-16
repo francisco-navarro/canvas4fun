@@ -20,7 +20,8 @@ browserSync.init(null, {
     server: {
         baseDir: 'src',
         routes: {
-          '/lib': 'node_modules'
+          '/lib': 'node_modules',
+          '/img': 'img'
         }
     }
 });

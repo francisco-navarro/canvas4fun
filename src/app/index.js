@@ -10,4 +10,6 @@ function init(){
   SystemJS.import('core/draw.js');
   SystemJS.import('core/events.js');
   SystemJS.import('core/map.js');
+  SystemJS.import('scenery/main.js');
+  SystemJS.import('mobs/main.js');
 }
