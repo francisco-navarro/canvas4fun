@@ -2,15 +2,20 @@ app.events = new Events();
 
 function Events(){
   setTimeout(animate, 1000);
-  app.canvas.addEventListener('click', clicked, false);
+  app.canvas.addEventListener('click', click, false);
+  app.canvas.addEventListener('mousemove', mousemove, false);
 
-  function clicked(ev){
-    var rect = app.canvas.getBoundingClientRect();
+  function click(ev){
     var cartCord = getMousePos(app.canvas, ev);
     var isoCord = app.getIsoCell(cartCord.x, cartCord.y);
-    // console.log(isoCord);
-    app.ctx.clearRect(cartCord.x - 40, cartCord.y - 40, 64, 64);
+    //TODO: recoger el evento que tenemos preparado de click
     app.scenery.road.add(isoCord.x, isoCord.y);
+  }
+
+  function mousemove(ev){
+    var cartCord = getMousePos(app.canvas, ev);
+    var isoCord = app.getIsoCell(cartCord.x, cartCord.y);
+    app.map.moveCursor(isoCord.x, isoCord.y);
   }
 
   function getMousePos(canvas, evt) {
@@ -23,6 +28,8 @@ function Events(){
   }
 
   function animate(){
+    //Esto se está renderizando siempre con requestAnimationFrame
+    app.map.animate();
     if (app.scenery) {
       app.scenery.animate();
     }
