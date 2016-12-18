@@ -16,7 +16,10 @@ function Toolbar() {
   }
 
   function click(ev) {
+    var $target = $(ev.currentTarget);
     button = ev.currentTarget.getAttribute('id');
+    $toolbarComponent.find('i').removeClass('selected');
+    $target.addClass('selected');
   }
 
   function selected(x, y) {
