@@ -1,4 +1,7 @@
-app.mobs.cars = function() {
+app.mobs.cars = new Cars();
+
+function Cars() {
+  var colors = ['green'];
   var image = new Image();
   var size;
   var dx = 0;
@@ -15,7 +18,6 @@ app.mobs.cars = function() {
     image.src = 'images/cars.png';
     //drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
     draw(greenX, dx, dy);
-    window.requestAnimationFrame(init);
   }
   function draw(car, x, y){
     //Cartesian coords
@@ -28,6 +30,5 @@ app.mobs.cars = function() {
     app.ctx.drawImage.apply(app.ctx, car);
   }
 
-  // init();
-  window.requestAnimationFrame(init);
-};
+  init();
+}
