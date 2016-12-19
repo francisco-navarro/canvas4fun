@@ -1,9 +1,8 @@
 var express = require('express');
-var browserSync = require('browser-sync');
 var path = require('path');
 
 if(process.argv[2] === 'debug') {
-    browserSync.init(null, {
+    require('browser-sync').init(null, {
         browser: 'google chrome',
         port: 7000,
         files: ['src/**/*.*'],
