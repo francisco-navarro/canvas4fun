@@ -16,7 +16,7 @@ if(process.argv[2] === 'debug') {
     });
 } else {
     var app = express();
-    var appPort = 3000;
+    var appPort = process.env.PORT || 3000;
 
     app.use('/', express.static(__dirname + '/src/'));
     app.use('/lib', express.static(__dirname + '/node_modules/'));
