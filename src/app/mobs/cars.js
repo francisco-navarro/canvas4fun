@@ -2,32 +2,45 @@ app.mobs.cars = new Cars();
 
 function Cars() {
   var colors = ['green'];
-  var image = new Image();
+  var images = [];
   var size;
-  var dx = 0;
-  var dy = 3;
   var animation = 0;
 
-  var greyX = [image, 13*0, 0, 14, 12, dx, dy, 14, 12];
-  var greyY = [image, 13*1, 0, 14, 12, dx, dy, 14, 12];
-  var greenX = [image, 13*2, 0, 14, 12, dx, dy, 14, 12];
-  var greenY = [image, 13*3, 0, 14, 12, dx, dy, 14, 12];
+  this.animate = animate;
 
+   //image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight
+   var carX1 = [null, 15*0, 0, 15, 15, 0, 0, 15, 15];
+   var carY1 = [null, 15*1, 0, 15, 15, 0, 0, 15, 15];
+   var carX2 = [null, 15*2, 0, 15, 15, 0, 0, 15, 15];
+   var carY2 = [null, 15*3, 0, 15, 15, 0, 0, 15, 15];
+  
   function init(){
     size = app.conf.SQUARE_SIZE;
-    image.src = 'images/cars.png';
-    //drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)
-    draw(greenX, dx, dy);
+    colors.forEach(function(color){
+      var image = new Image();
+      image.src = 'img/vehicles/' + color + '_car.png';
+      images.push(image);
+    });
   }
+
   function draw(car, x, y){
     //Cartesian coords
-    var carX = app.conf.offsetX + (size) + x * size + animation++;
-    var carY = app.conf.offsetY - size + y * size;
+    var carX = app.conf.offsetX + size + size * x //+ animation++;
+    var carY = app.conf.offsetY - size + size * (y + 1);
     //Isometric coords
+    car[0] = images[0];
     car[5] = carX + carY;
     car[6] = (carY - carX) / 2.0;
 
     app.ctx.drawImage.apply(app.ctx, car);
+    // app.ctx.drawImage(images[0], car[5], car[6]);
+  }
+
+  function animate(){
+    draw(carX1, 1, 1);
+    // draw(carY1, 1, 1);
+    // draw(carX2, 2, 2);
+    // draw(carY2, 1, 1);
   }
 
   init();

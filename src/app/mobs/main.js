@@ -13,10 +13,10 @@ function Mobs() {
     buffer.forEach(function(item){
       app.buffer.animate();
     });
+    app.mobs.cars.animate();
   }
 
   function add() {
-    
   }
 
   function init() {
