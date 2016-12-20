@@ -5,7 +5,8 @@ function Toolbar() {
   var $toolbarComponent;
   var button;
   var links = {
-    'road': 'scenery.road.add'
+    'road': 'scenery.road.add',
+    'car': 'mobs.cars.add'
   };
 
   this.selected = selected;

@@ -6,7 +6,8 @@ function Cars() {
   var size;
   var animation = 0;
 
-  this.animate = animate;
+  this.add = add;
+  this.Car = Car;
 
    //image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight
    var carX1 = [null, 15*0, 0, 15, 15, 0, 0, 15, 15];
@@ -23,24 +24,32 @@ function Cars() {
     });
   }
 
-  function draw(car, x, y){
-    //Cartesian coords
-    var carX = app.conf.offsetX + size + size * x //+ animation++;
+  function Car(x, y){
+    var carX = app.conf.offsetX + size + size * x;
     var carY = app.conf.offsetY - size + size * (y + 1);
-    //Isometric coords
-    car[0] = images[0];
-    car[5] = carX + carY;
-    car[6] = (carY - carX) / 2.0;
 
-    app.ctx.drawImage.apply(app.ctx, car);
-    // app.ctx.drawImage(images[0], car[5], car[6]);
+    this.animate = animate;
+
+    function animate(){
+      draw(carX1);
+    }
+
+    function draw(car){
+      //Cartesian coords
+      //Isometric coords
+      car[0] = images[0];
+      car[5] = carX + carY;
+      car[6] = (carY - carX) / 2.0;
+
+      app.ctx.drawImage.apply(app.ctx, car);
+      // app.ctx.drawImage(images[0], car[5], car[6]);
+    }
   }
 
-  function animate(){
-    draw(carX1, 1, 1);
-    // draw(carY1, 1, 1);
-    // draw(carX2, 2, 2);
-    // draw(carY2, 1, 1);
+  function add(x, y){
+    if (app.scenery.road.roadsMatrix[x][y]){
+      app.mobs.buffer.push(new Car(x, y));
+    }
   }
 
   init();

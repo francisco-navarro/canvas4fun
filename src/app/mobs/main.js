@@ -4,23 +4,18 @@ function Mobs() {
   var deps = [
     'cars'
   ];
-  var buffer;
+  var buffer = [];
 
   this.animate = animate;
-  this.add = add;
+  this.buffer = buffer;
 
   function animate() {
     buffer.forEach(function(item){
-      app.buffer.animate();
+      item.animate();
     });
-    app.mobs.cars.animate();
-  }
-
-  function add() {
   }
 
   function init() {
-    buffer = [];
     deps.forEach(function(item){
       SystemJS.import('mobs/' + item + '.js');
     });

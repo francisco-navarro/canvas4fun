@@ -17,6 +17,8 @@ function Road() {
   this.example = example;
   this.add = add;
 
+  this.roadsMatrix = roadsMatrix;
+
   function init(){
     loadImages();
     for(var i = 0; i < app.conf.map.height; i++){
@@ -52,7 +54,7 @@ function Road() {
     for(i = 0; i < way.length; i++){
       for(j = 0; j < way[i].length; j++){
         try{
-          if (way[i][j]) {
+          if (way[i][j] === 1) {
             curve = isCurve(way, i, j);
             if (curve) {
               app.scenery.drawTile(curve, i, j);
