@@ -47,9 +47,9 @@ function Cars() {
   }
 
   function add(x, y){
-    if (app.scenery.road.roadsMatrix[x][y]){
+    // if (app.scenery.road.roadsMatrix[x][y]){
       app.mobs.buffer.push(new Car(x, y));
-    }
+    // }
   }
 
   init();
