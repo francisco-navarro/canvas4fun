@@ -31,6 +31,8 @@ function Cars() {
     this.animate = animate;
 
     function animate(){
+      //Sumar las coordenadas de carX y carY segun el path
+      //Calcular según la carretera que imagen pintar
       draw(carX1);
     }
 
