@@ -20,7 +20,7 @@ function Scenery(){
     });
   };
 
-  this.drawTile = function(image, x, y /*, sWidth, sHeight, dx, dy, dWidth, dHeight*/){
+  this.drawTile = function(image, x, y){
     //Cartesian coords
     var carX = app.conf.offsetX + (size) + size * x;
     var carY = app.conf.offsetY - size + size * y;

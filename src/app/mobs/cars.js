@@ -44,14 +44,13 @@ function Cars() {
       car[6] = (carY - carX) / 2.0;
 
       app.ctx.drawImage.apply(app.ctx, car);
-      // app.ctx.drawImage(images[0], car[5], car[6]);
     }
   }
 
   function add(x, y){
-    // if (app.scenery.road.roadsMatrix[x][y]){
+    if (app.scenery.road.roadsMatrix[x][y]){
       app.mobs.buffer.push(new Car(x, y));
-    // }
+    }
   }
 
   init();
