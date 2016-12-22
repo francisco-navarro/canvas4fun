@@ -5,8 +5,8 @@ app.conf = {
   offsetX: -300,
   offsetY: 350,
   map: {
-    height: 6,
-    width: 5,
+    height: 12,
+    width: 12,
     coordText: true
   }
 };
