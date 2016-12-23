@@ -1,10 +1,10 @@
 app.mobs.cars = new Cars();
+'use strict';
 
 function Cars() {
   var colors = ['green'];
   var images = [];
   var size;
-  var animation = 0;
 
   this.add = add;
   this.Car = Car;
