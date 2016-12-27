@@ -10,10 +10,10 @@ function Cars() {
   this.Car = Car;
 
    //image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight
-   var carX1 = [null, 15*0, 0, 15, 15, 0, 0, 15, 15];
-   var carY1 = [null, 15*1, 0, 15, 15, 0, 0, 15, 15];
-   var carX2 = [null, 15*2, 0, 15, 15, 0, 0, 15, 15];
-   var carY2 = [null, 15*3, 0, 15, 15, 0, 0, 15, 15];
+   var carX1 = [null, 64*0, 0, 64, 64, 0, 0, 64, 64];
+   var carX2 = [null, 64*3, 0, 64, 64, 0, 0, 64, 64];
+   var carY1 = [null, 64*1, 0, 64, 64, 0, 0, 64, 64];
+   var carY2 = [null, 64*2, 0, 64, 64, 0, 0, 64, 64];
   
   function init(){
     size = app.conf.SQUARE_SIZE;
@@ -26,15 +26,16 @@ function Cars() {
 
   function Car(x, y){
     var carX = app.conf.offsetX + size + size * x;
-    var carY = app.conf.offsetY - size + size * (y + 1);
+    var carY = app.conf.offsetY - size + size * (y);
 
     this.animate = animate;
 
     function animate(){
       //Sumar las coordenadas de carX y carY segun el path
       //Calcular según la carretera que imagen pintar
-      carX++;
-      draw(carX1);
+      //CarX1 ++, CarX2 --
+      carX--;
+      draw(carX2);
     }
 
     function draw(car){
