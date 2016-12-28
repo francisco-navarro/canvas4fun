@@ -11,11 +11,12 @@ function Road() {
   var curve4 = new Image();
 
   var roadsMatrix = [];
+  var roadsTiles = [];
 
   this.animate = animate;
   this.draw = draw;
-  this.example = example;
   this.add = add;
+  this.getRoad = getRoad;
 
   this.roadsMatrix = roadsMatrix;
 
@@ -23,17 +24,20 @@ function Road() {
     loadImages();
     for(var i = 0; i < app.conf.map.height; i++){
       roadsMatrix[i] = new Array(app.conf.map.width);
+      roadsTiles[i] = new Array(app.conf.map.width);
     }
   }
 
   function animate(){
     this.draw(roadsMatrix);
-    // example();
   }
 
   function add(x, y) {
     if (x >= app.conf.map.height || y >= app.conf.map.width){
       return;
+    }
+    for(var i = 0; i < app.conf.map.height; i++){
+      roadsTiles[i] = new Array(app.conf.map.width);
     }
     roadsMatrix[x][y] = 1;
   }
@@ -54,19 +58,25 @@ function Road() {
     for(i = 0; i < way.length; i++){
       for(j = 0; j < way[i].length; j++){
         try{
-          if (way[i][j] === 1) {
+          if (roadsTiles[i][j]) {
+            app.scenery.drawTile(roadsTiles[i][j], i, j);
+          } else if (way[i][j] === 1) {
             curve = isCurve(way, i, j);
             if (curve) {
+              roadsTiles[i][j] = curve;
               app.scenery.drawTile(curve, i, j);
             } else if (way[i + 1] && way[i + 1][j] || way[i - 1] && way[i - 1][j]) {
               if (way[i][j + 1] || way[i][j - 1]){
                 //Tiene en el eje X e Y
+                roadsTiles[i][j] = crossRoads;
                 app.scenery.drawTile(crossRoads, i, j);
               } else {
                 //Tiene en el eje X
+                roadsTiles[i][j] = roadX;
                 app.scenery.drawTile(roadX, i, j);
               }
             } else if (way[i][j + 1] || way[i][j - 1]) {
+              roadsTiles[i][j] = roadY;
               app.scenery.drawTile(roadY, i, j);
             }
           }
@@ -117,29 +127,12 @@ function Road() {
     return false;
   }
 
-  function example(){
-    //For testing images
-    app.scenery.drawTile(roadX, 0, 2);
-    app.scenery.drawTile(roadX, 1, 2);
-    app.scenery.drawTile(roadX, 2, 2);
-    app.scenery.drawTile(roadX, 3, 2);
-    app.scenery.drawTile(roadX, 4, 2);
-    app.scenery.drawTile(roadX, 4, 6);
-
-    app.scenery.drawTile(crossRoads, 5, 2);
-    app.scenery.drawTile(curve3, 5, 6);
-    app.scenery.drawTile(curve4, 3, 6);
-    app.scenery.drawTile(roadY, 3, 5);
-    app.scenery.drawTile(curve1, 3, 4);
-
-    app.scenery.drawTile(roadY, 5, 3);
-    app.scenery.drawTile(roadY, 5, 4);
-    app.scenery.drawTile(roadY, 5, 5);
-
-    app.scenery.drawTile(roadX, 6, 2);
-    app.scenery.drawTile(roadX, 7, 2);
-    app.scenery.drawTile(roadX, 8, 2);
+  function getRoad(i, j){
+    if (roadsTiles[i][j]){
+      return roadsTiles[i][j].src.replace(/(.*\/)(.*)(\.\w+)/gm, '$2');
+    }
   }
+
 
   init();
 }
